@@ -1,0 +1,28 @@
+<ion-view view-title="Create Account">
+  	<div class="create-account-header">
+  		<h3>Fill the form to create an account</h3>
+  	</div>
+	
+	<form name="$parent.createAccountForm" ng-submit="createAccount()">
+	    <div class="list">
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Username</span>
+		    <input type="text" ng-model="user" placeholder="Drupi" autocorrect="off" autocapitalize="off" spellcheck="false">
+		  </label>
+		  
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Email</span>
+		    <input type="text" placeholder="john@suhr.com" ng-model="mail">
+		  </label>
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Password</span>
+		    <input type="password" placeholder="" ng-model="pass">
+		  </label>
+
+		</div>
+		<div class="padding">
+	       <button class="button button-block button-positive activated" type="submit">Create Account</button>
+	     </div>
+	</form>
+</ion-view>
