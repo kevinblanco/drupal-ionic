@@ -6,7 +6,10 @@ var app = angular.module('drupalionic', ['ionic', 'drupalionic.services', 'drupa
  * If you install any cordiva plugin configure it here
  * 
  */ 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $rootScope) {
+
+  //Set initial loggedIn state
+  $rootScope.isLoggedIn = false;
 
   $ionicPlatform.ready(function() {
     

@@ -101,20 +101,26 @@ app_services.factory('Account', function($http, $q, drupal_instance, api_endpoin
 /**
  * Auth factory that holds logic and data regarding the user across the app
  */
-app_services.factory( 'Auth', function() {
+app_services.factory( 'Auth', function($window) {
 
   var currentUser;
 
   return {
 
     //Set the user data to use accross the app, this is saved when loggedIn
-    setUserData: function(data) { 
-      currentUser = data;
-      return true;
+    setUserData: function(key,value) { 
+      $window.localStorage[data] = value;
+    },
+
+    //Get the currentUser data
+    getUserData: function(key) { 
+      return $window.localStorage[key] || '{}';
     },
 
     //Helper function to know if the user is loggedIn or not
     isLoggedIn: function() {
+
+      currentUser = $window.localStorage['user'];
 
       if( (typeof currentUser === "object") && (currentUser !== null) ){
           return true;
@@ -122,11 +128,6 @@ app_services.factory( 'Auth', function() {
         return false;
       }
 
-    },
-
-    //Get the currentUser data
-    currentUser: function() { 
-      return currentUser; 
     }
   };
 });

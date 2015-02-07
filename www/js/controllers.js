@@ -4,7 +4,14 @@ var app_controllers = angular.module('drupalionic.controllers', ['drupalionic.se
 /*
 * Application Controller
 */
-app_controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopup, Account) {
+app_controllers.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout, $ionicPopup, Account, Auth) {
+
+
+  if( Auth.isLoggedIn() ){
+    $rootScope.isLoggedIn = true;
+  }else{
+    $rootScope.isLoggedIn = false;
+  }
 
   // This will control the 'loading' gif on the view
   $scope.logging = false;
@@ -37,7 +44,17 @@ app_controllers.controller('AppCtrl', function($scope, $ionicModal, $timeout, $i
         
         //This is the success function of the promise
         $scope.user = data;
+
+        //Hide the loading message
         $scope.logging = false;
+
+        //Saves the user data to localstorage
+        Auth.setUserData('user', data);
+
+        //Set the loggedIn flag to 'true'
+        $rootScope.isLoggedIn = true;
+
+        //Show Alert on device
         alert("Successfully Logged in");
         
         //This is the failure funcion of the promise
@@ -65,7 +82,7 @@ app_controllers.controller('AccountCtrl', function($scope, Account) {
         //This is the success function of the promise
         $scope.user = data;
         $scope.logging = false;
-        alert("Account created successfully");
+        alert("Account created successfully, Please go to the login page");
 
         //Clean the form fields
         $scope.user = " ";

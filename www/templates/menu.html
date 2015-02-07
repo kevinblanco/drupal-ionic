@@ -18,15 +18,24 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
+
+        <ion-item nav-clear menu-close ng-click="login()" ng-show="!$root.isLoggedIn" >
           Login
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
+
+        <ion-item nav-clear menu-close href="#/app/search" ng-show="!$root.isLoggedIn" >
           Create Account
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
+
+        <ion-item nav-clear menu-close href="#/app/browse" ng-show="$root.isLoggedIn" >
           Logout
         </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/user" ng-show="$root.isLoggedIn" >
+          User Data
+        </ion-item>
+
+
       </ion-list>
     </ion-content>
   </ion-side-menu>
