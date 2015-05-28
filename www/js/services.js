@@ -106,7 +106,7 @@ app_services.factory( 'Auth', function($window) {
 
     //Set the user data to use accross the app, this is saved when loggedIn
     setUserData: function(key,value) { 
-      $window.localStorage[data] = value;
+      $window.localStorage[key] = value;
     },
 
     //Get the currentUser data
