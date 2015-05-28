@@ -32,10 +32,7 @@ app_services.factory('Account', function($http, $q, drupal_instance, api_endpoin
             url           : drupal_instance + api_endpoint + 'user/login',
             dataType      : 'json',
             crossDomain   : true,
-            data          : {
-              "username" : username,
-              "password" : password
-            },
+            data          : 'username=' + username + '&password=' + password,
             headers       : {
               "Content-Type": "application/x-www-form-urlencoded"
             }
