@@ -32,10 +32,7 @@ app_services.factory('Account', function($http, $q, drupal_instance, api_endpoin
             url           : drupal_instance + api_endpoint + 'user/login',
             dataType      : 'json',
             crossDomain   : true,
-            data          : {
-              "username" : username,
-              "password" : password
-            },
+            data          : 'username=' + username + '&password=' + password,
             headers       : {
               "Content-Type": "application/x-www-form-urlencoded"
             }
@@ -109,7 +106,7 @@ app_services.factory( 'Auth', function($window) {
 
     //Set the user data to use accross the app, this is saved when loggedIn
     setUserData: function(key,value) { 
-      $window.localStorage[data] = value;
+      $window.localStorage[key] = value;
     },
 
     //Get the currentUser data
